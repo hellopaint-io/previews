@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head><base href="/previews/pr-358/">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    canvas {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <link rel="stylesheet" href="/previews/pr-358/firebaseui-6e46a6dacfad2cba.css" integrity="sha384-Qmubm8LZTSzfb8VqQp5B6CS5CbFsCbItep3FrVkvfpPRqR7jngNCoZr2yNiBVbt8"/>
+  
+  
+<link rel="modulepreload" href="/previews/pr-358/malmal-2e8fefb25dcbbd23.js" crossorigin="anonymous" integrity="sha384-wAgNo4g4LIShYTnr7qrvylztQDp8zLvlf2Pq1wySJCVGMruK8L6CXM6sbJyM2B1T"><link rel="preload" href="/previews/pr-358/malmal-2e8fefb25dcbbd23_bg.wasm" crossorigin="anonymous" integrity="sha384-Gu38cXqOpHqBDx30T76Z/HIyOUVjz8SA6QpHrpyO2vmVbVt7mJsJxkeBB33tHytA" as="fetch" type="application/wasm"></head>
+
+<body>
+<script type="module">
+  const base = document.querySelector('base')?.href ?? (window.location.origin + '/');
+  const mobileInterop = await import(new URL('mobile-interop.js', base).href);
+  window.mobileInterop = mobileInterop;
+</script>
+<canvas id="canvas"></canvas>
+
+<script type="module">
+import init, * as bindings from '/previews/pr-358/malmal-2e8fefb25dcbbd23.js';
+const wasm = await init({ module_or_path: '/previews/pr-358/malmal-2e8fefb25dcbbd23_bg.wasm' });
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script></body>
+</html>
