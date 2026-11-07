@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head><base href="/previews/main/">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    canvas {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <link rel="stylesheet" href="/previews/main/firebaseui-6e46a6dacfad2cba.css" integrity="sha384-Qmubm8LZTSzfb8VqQp5B6CS5CbFsCbItep3FrVkvfpPRqR7jngNCoZr2yNiBVbt8"/>
+  
+  
+
+<script type="module">
+import init, * as bindings from '/previews/main/malmal-4423f1eb5341266b.js';
+const wasm = await init({ module_or_path: fetch('/previews/main/malmal-4423f1eb5341266b_bg.wasm.gz').then((r) => { if (!r.ok) throw new Error(`${r.status} /previews/main/malmal-4423f1eb5341266b_bg.wasm.gz`); const body = r.headers.has('content-encoding') ? r.body : r.body.pipeThrough(new DecompressionStream('gzip')); return new Response(body, { headers: { 'content-type': 'application/wasm' } }); }) });
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script><link rel="modulepreload" href="/previews/main/malmal-4423f1eb5341266b.js" crossorigin="anonymous" integrity="sha384-+jbZvR4VD73xeDslFo2uvDhvaxYzt8Xe33eVAaE34JRzlAgpAnsN17rEINbSQu1a"></head>
+
+<body>
+<script type="module">
+  const base = document.querySelector('base')?.href ?? (window.location.origin + '/');
+  const mobileInterop = await import(new URL('mobile-interop.js', base).href);
+  window.mobileInterop = mobileInterop;
+</script>
+<canvas id="canvas"></canvas>
+</body>
+</html>
