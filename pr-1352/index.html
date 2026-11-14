@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head><base href="/previews/pr-1352/">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    /* Fixed like eframe's layer of text fields under it. iOS Safari scrolls
+       the page to lift a focused field above the keyboard, even with
+       overflow hidden: a canvas in the flow would move and the fixed fields
+       not, so taps meant for a field would land on the app. */
+    canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+  <!-- No browser zoom: egui does its own. iOS Safari otherwise zooms in on a
+       focused text field below 16px and has no way back out, since the
+       canvas takes every pinch. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+
+  
+  
+
+<script type="module">
+import init, * as bindings from '/previews/pr-1352/malmal-5e1ded9e8f945e93.js';
+const wasm = await init({ module_or_path: fetch('/previews/pr-1352/malmal-5e1ded9e8f945e93_bg.wasm.gz').then((r) => { if (!r.ok) throw new Error(`${r.status} /previews/pr-1352/malmal-5e1ded9e8f945e93_bg.wasm.gz`); const body = r.headers.has('content-encoding') ? r.body : r.body.pipeThrough(new DecompressionStream('gzip')); return new Response(body, { headers: { 'content-type': 'application/wasm' } }); }) });
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script><link rel="modulepreload" href="/previews/pr-1352/malmal-5e1ded9e8f945e93.js" crossorigin="anonymous" integrity="sha384-fQMm+l1oCa4CUtL+Se+vk3Y2GQf+fkmGJPPQFITZ1HDdkO+DKgMx7+waHDT1U4hO"></head>
+
+<body>
+<script type="module">
+  const base = document.querySelector('base')?.href ?? (window.location.origin + '/');
+  const mobileInterop = await import(new URL('mobile-interop.js', base).href);
+  window.mobileInterop = mobileInterop;
+</script>
+<canvas id="canvas"></canvas>
+</body>
+</html>
